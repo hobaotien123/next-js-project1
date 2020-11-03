@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from 'next/link';
-// import { GetStaticProps } from 'next'
-
-import router from 'next/router';
-// import '../styles/globals.css'
+import style from "./newPage.module.css"
 
 function newPage({ posts }) {
     console.log("posts",posts);
@@ -18,7 +15,7 @@ function newPage({ posts }) {
   return(
     <>
         {
-          posts !== undefined && posts.map( (item,index) => <p key={index}>{item.title}</p>)
+          posts !== undefined && posts.map( (item,index) => <p className={style.text} key={index}>{item.title}</p>)
         }
         <h1>Hehe</h1>
         <Link href="/">
