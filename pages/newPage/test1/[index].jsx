@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./test1.module.scss";
 import Link from 'next/link';
-import FormData from "form-data";
 // import "../../../styles/style.scss";s
 // import { GetStaticProps } from 'next'
 

@@ -1,0 +1,53 @@
+.all_audio_wrapper{
+    height: 50px;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    overflow: hidden;
+    .info{
+        display: grid;
+        grid-template-columns: 50px auto;
+        .thum_audio{
+            img{
+                max-width: 100%;
+                max-height: 100%;
+                border-radius: 10px;
+            }
+        }
+        .info_audio{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .title_audio{
+                font-size: 12px;
+                // display: block;s
+            }
+            .singer_audio{
+                display: block;
+                font-size: 8px;
+            }
+        }
+    }
+    .play_list_audio{
+        display: grid;
+        grid-template-columns: 20% auto;
+        .all_icon_audio{
+            display: flex;
+            align-items: center;
+            .anticon.anticon-caret-right{
+                margin: 0px auto;
+            }
+            // .anticon.anticon-caret-right{
+            //     &:hover{
+            //         color: #fff;
+            //         background-color: black;
+            //         transform: scale(2);
+            //     }
+            // }
+        }
+        .progress_audio{
+            margin-left: 40px;
+            display: flex;
+            align-items: center;
+        }
+    }
+}
