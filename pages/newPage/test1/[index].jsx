@@ -65,7 +65,11 @@ function newPage({ posts }) {
               <source src="https://cdn.nhacdj.vn/file/nhacdj-data/music/NhacDJ.vn_5f7c876aef5da.mp3" type="audio/ogg" />
           </audio> 
         </div>
-        }
+        } 
+        {
+         music && <div className={style.video}>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/gEb3lAjbRYU?autoplay=1&mute=0" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        </div>}
 
 
 

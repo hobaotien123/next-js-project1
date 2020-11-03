@@ -1,6 +1,6 @@
 #my_music{
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     background-image: url("https://afamilycdn.com/150157425591193600/2020/9/4/image20200903t065307591z20200903141559-15992052797591309028117.jpg");
     background-size: cover;
@@ -8,6 +8,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin : 0px auto;
+    margin-top: 10%;
     &:hover .play_icon{
         opacity: 1;
         transform: scale(1.2);
