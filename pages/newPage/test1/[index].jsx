@@ -85,11 +85,12 @@ export async function getStaticProps(next) {
   
     // // By returning { props: posts }, the Blog component
     // // will receive `posts` as a prop at build time
-    // return {
-    //   props: {
-    //     posts,
-    //   },
-    // }
+    var posts = ["1","2"]
+    return {
+      props: {
+        posts,
+      },
+    }
 }
 export async function getStaticPaths() {
   return {
