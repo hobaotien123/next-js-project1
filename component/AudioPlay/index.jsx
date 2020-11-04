@@ -20,11 +20,11 @@ const AudioPlay = () => {
                 </audio>  */}
                 <div className={style.all_icon_audio}>
                     <StepBackwardOutlined />
-                    <CaretRightOutlined style={{margin: '0px auto',}}/>
+                    <CaretRightOutlined className={style.icon_play} style={{margin: '0px auto',}}/>
                     <StepForwardOutlined />
                 </div>
                 <div className={style.progress_audio}>
-                    <Progress percent={100} showInfo={false} />
+                    <Progress strokeWidth={3} percent={100} showInfo={false} />
                 </div>
             </div>
         </div>

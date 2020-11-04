@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from 'next/link';
 import style from "./newPage.module.css"
+import AudioPlay from "../../component/AudioPlay";
 
 function newPage({ posts }) {
     console.log("posts",posts);
@@ -28,13 +29,15 @@ function newPage({ posts }) {
             console.log("Component render")
         }
         <button onClick={clickTest}>Click me</button>
-        <Link href="/">aaaa</Link>
+        <Link href="/music">aaaa</Link>
     </>
   );
 }
 export async function getStaticProps(next) {
     // Call an external API endpoint to get posts.
     // You can use any data fetching library
+
+    console.log("hehehee123");
     const res = await fetch('http://localhost:8082/posts');
     console.log("res",res);
     const posts = await res.json();

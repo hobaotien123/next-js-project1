@@ -33,16 +33,19 @@
         .all_icon_audio{
             display: flex;
             align-items: center;
-            .anticon.anticon-caret-right{
+            .icon_play{
                 margin: 0px auto;
+                &:hover{
+                    display: flex;
+                    align-content: center;
+                    justify-content: center;
+                    background-color: orange;
+                    color: #fff;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 10px;
+                }
             }
-            // .anticon.anticon-caret-right{
-            //     &:hover{
-            //         color: #fff;
-            //         background-color: black;
-            //         transform: scale(2);
-            //     }
-            // }
         }
         .progress_audio{
             margin-left: 40px;
