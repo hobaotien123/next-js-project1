@@ -1,26 +1,16 @@
 import React, { useEffect, useState } from "react";
 import style from "./test1.module.scss";
-import Link from 'next/link';
-// import "../../../styles/style.scss";s
-// import { GetStaticProps } from 'next'
+import { WifiOutlined, WomanOutlined,CaretRightOutlined } from '@ant-design/icons';
 
-import router from 'next/router';
-// import '../styles/globals.css'
+// import Image from 'next/image'
 
 function newPage({ posts }) {
-    console.log("posts",posts);
     const [music,setMusic] = useState(false);
-    // const [state,setState]  = useState(false);
-    // const [state2,setState2] = useState(null);
-    // const clickTest = () => {
-    //     console.log("hi");
-    //     setState(!state);
-    // }
+    const [audioPlay,setAudioPlay] = useState("");
     useEffect( () => {
         if(music === true){
           var x = document.getElementById("myAudio");
           x.addEventListener("play", () => {
-              // console.log()
               var test12 = document.getElementById("test1_my_music__2lip_");
               test12.classList.add("abc");
               test12.setAttribute("style","animation-play-state : running;");
@@ -31,60 +21,84 @@ function newPage({ posts }) {
               test12.setAttribute("style","animation-play-state : paused;");
           })
         }
-    })
-    const clickPlayMusic = () => {
-      setMusic(!music);
+    });
+    const clickPlayMusic = (item) => {
+      return (event) => {
+        if(item.srcMusic !== undefined){
+          setMusic(true);
+          const x = document.getElementById("myAudio");
+          const x2 = document.getElementById("toggle_img");
+          x.setAttribute("src",item.srcMusic);
+          x2.setAttribute("src", item.imgMusic)
+        }
+      }
     }
   return(
     <>
-        {/* {
-          posts !== undefined && posts.map( (item,index) => <p key={index}>{item.title}</p>)
-        } */}
-        
-        {/* <h1 className="hihi">Test1</h1>
-        <Link href="/">
-            <h2>Link</h2>
-        </Link>
-        {
-            state && <p>Toggle</p>
-        }
-        {
-            console.log("Component render")
-        } */}
-
-
-        {/* <div id="test12" style={{ width : 50, height  : 50, backgroundImage : "https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/cover/e/e/e/c/eeecd2e14cc730b0f748d5362723723a.jpg", borderRadius : "50%" }}>
-
-        </div> */}
-        <div id={style.my_music}>
-            <img onClick={clickPlayMusic} className={style.play_icon} src="/play-button.svg" />
+      {
+        console.log("RENDER")
+      }
+      <div className={style.container}>
+        <div className={style.all_box_music}>
+            <div className={style.left_box_music}>
+              <div id={style.my_music}>
+                <img id="toggle_img" />
+              </div>
+              <div className={ music === true ? style.all_music : style.no_music }>
+                <audio id="myAudio" autoPlay controls>
+                    <source type="audio/ogg" />
+                    <source  type="audio/mpeg" />
+                </audio> 
+              </div>
+            </div>
+            <div className={style.right_box_music}>
+              <p style={{color : "#fff"}}>{audioPlay}</p>
+              {
+                posts.map((item,index) => {
+                  return(
+                          <div onClick={clickPlayMusic(item)} key={index} item={item} className={style.box_item_music}>
+                            <div className={style.item_number_music}>
+                              <h6>{item.id}</h6>
+                            </div>
+                            <div className={style.item_img_music}>
+                              <img
+                                src={item.imgMusic}
+                              />
+                              <div className={style.icon_hover_music}>
+                                <CaretRightOutlined className={style.icon_hover} style={{color : "#fff", fontSize : 25}} />
+                              </div>
+                            </div>
+                            <div className={style.item_content_music}>
+                              <h4 className={style.title_music}>{item.title}</h4>
+                              <p className={style.singer_music}>{item.singer}</p>
+                            </div>
+                            <div className={style.item_time_music}>
+                              <span className={style.time_music}>{item.time}</span>
+                            </div>
+                            <div className={style.item_all_icon_music}>
+                              <WifiOutlined style={{fontSize : 13, color : "#fff"}} />
+                              <WifiOutlined style={{fontSize : 13, color : "#fff" , margin : "0px 20px"}} />
+                              <WomanOutlined style={{fontSize : 13, color : "#fff"}} />
+                            </div>
+                          </div>
+                  );
+                })
+              }
+            </div>
         </div>
-        { music && <div className={style.all_music}>
-          <audio id="myAudio" autoPlay controls>
-              <source src="https://cdn.nhacdj.vn/file/nhacdj-data/music/NhacDJ.vn_5f7c876aef5da.mp3" type="audio/ogg" />
-          </audio> 
-        </div>
-        } 
-        {
-         music && <div className={style.video}>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/gEb3lAjbRYU?autoplay=1&mute=0" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-        </div>}
-
-
-
+      </div>
     </>
   );
 }
 export async function getStaticProps(next) {
     // Call an external API endpoint to get posts.
     // You can use any data fetching library
-    // const res = await fetch('http://localhost:8082/posts');
-    // console.log("res",res);
-    // const posts = await res.json();
+    const res = await fetch('http://localhost:8082/posts');
+    console.log("res",res);
+    const posts = await res.json();
   
-    // // By returning { props: posts }, the Blog component
-    // // will receive `posts` as a prop at build time
-    var posts = ["1","2"]
+    // By returning { props: posts }, the Blog component
+    // will receive `posts` as a prop at build time
     return {
       props: {
         posts,
