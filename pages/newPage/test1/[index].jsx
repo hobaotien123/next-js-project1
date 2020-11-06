@@ -103,14 +103,34 @@ export async function getStaticProps(next) {
       props: {
         posts,
       },
+      // notFound : true,
+      // redirect: {
+      //   destination: '/',
+      //   permanent: false
+      // }
     }
 }
+// export async function getServerSideProps(next) {
+//   // Call an external API endpoint to get posts.
+//   // You can use any data fetching library
+//   const res = await fetch('http://localhost:8082/posts');
+//   console.log("res",res);
+//   const posts = await res.json();
+
+//   // By returning { props: posts }, the Blog component
+//   // will receive `posts` as a prop at build time
+//   return {
+//     props: {
+//       posts,
+//     },
+//   }
+// }
 export async function getStaticPaths() {
   return {
     paths: [
       { params: { index : '1' } } // See the "paths" section below
     ],
-    fallback: false // See the "fallback" section below
+    fallback: false, // See the "fallback" section below
   };
 }
 export default newPage;
