@@ -1,0 +1,37 @@
+.container{
+    width: 1200px;
+    height: auto;
+    margin : 0px auto;
+    .all_layout{
+        // display: grid;
+        // grid-template-row: repeat(4,1fr);
+        // grid-template-
+        // min-height: 1000px;
+        #div2{
+            width: 200px;
+            height: 200px;
+        }
+        .div1{
+            height: 400px;
+            margin-bottom: 10px;
+            background-color: aqua;
+        }
+        .div2{
+            background-color: black;
+        }
+        .div3{
+            background-color: brown;
+        }
+        .div4{
+            background-color: burlywood;
+        }
+    }
+    #back_top_top{
+        width: 50px;
+        height: 50px;
+        background-color: aqua;
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+    }
+}

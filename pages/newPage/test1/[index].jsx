@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react";
 import style from "./test1.module.scss";
 import { WifiOutlined, WomanOutlined,CaretRightOutlined } from '@ant-design/icons';
+import { useDispatch, useSelector } from "react-redux";
+import {fetchDataAction} from "../../../action/fetchDataAction.js";
 
 // import Image from 'next/image'
 
 function newPage({ posts }) {
     const [music,setMusic] = useState(false);
     const [audioPlay,setAudioPlay] = useState("");
+    const { list } = useSelector(
+      (state) => state.fetchDataReducer
+    );
+    console.log("list",list);
+    const dispatch = useDispatch();
     useEffect( () => {
+        dispatch(fetchDataAction());
         if(music === true){
           var x = document.getElementById("myAudio");
           x.addEventListener("play", () => {
@@ -21,7 +29,7 @@ function newPage({ posts }) {
               test12.setAttribute("style","animation-play-state : paused;");
           })
         }
-    });
+    },[]);
     const clickPlayMusic = (item) => {
       return (event) => {
         if(item.srcMusic !== undefined){
