@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from 'next/router';
 import Link from 'next/link';
-import style from "./newPage.module.css"
-import AudioPlay from "../../component/AudioPlay";
+// import Image from 'next/image';
+import style from "./newPage.module.css";
 
-function newPage({ posts }) {
-    console.log("posts",posts);
+function newPage({ posts},) {  
+    const router = useRouter();
+    console.log("router",router);
     const [state,setState]  = useState(false);
     const clickTest = () => {
         console.log("hi");
@@ -15,21 +17,26 @@ function newPage({ posts }) {
     })
   return(
     <>
-        {
-          posts !== undefined && posts.map( (item,index) => <p className={style.text} key={index}>{item.title}</p>)
-        }
-        <h1>Hehe</h1>
-        <Link href="/">
-            <h2>Link</h2>
-        </Link>
-        {
-            state && <p>Toggle</p>
-        }
-        {
-            console.log("Component render")
-        }
-        <button onClick={clickTest}>Click me</button>
-        <Link href="/music">aaaa</Link>
+      {
+        posts !== undefined && posts.map( (item,index) => <p onClick={() => {
+          router.push({
+            pathname: `/newPage/test1/${item.id}`,
+            // query: { id: item.id }
+          })
+        }} className={style.text} key={index}>{item.title}</p>)
+      }
+      <h1>Hehe</h1>
+      <Link href="/">
+          <h2>Link</h2>
+      </Link>
+      {
+          state && <p>Toggle</p>
+      }
+      {
+          console.log("Component render")
+      }
+      <button onClick={clickTest}>Click me</button>
+      <Link href="/music">aaaa</Link>
     </>
   );
 }
