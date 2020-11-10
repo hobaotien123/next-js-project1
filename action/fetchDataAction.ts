@@ -5,4 +5,5 @@ export const fetchDataAction = () => {
     }
 }
 const abc = 123;
-// abc = 12;
+// as = 12;
+// ab =21// abc = 12;
